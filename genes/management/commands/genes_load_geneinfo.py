@@ -63,13 +63,10 @@ class Command(BaseCommand):
     help = ('Add standards from stds_file with the associations from ' +
             'assoc_file.')
 
+
     def add_arguments(self, parser):
-        parser.add_argument(
-            '--geneinfo_file',
-            dest='geneinfo',
-            required=True,
-            help="gene_info file available for download from NCBI entrez"
-        )
+
+        print("poop1")
         parser.add_argument(
             '--taxonomy_id',
             dest='taxonomy_id',
@@ -116,6 +113,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        print("poop2")
         # Load the organism.
         tax_id = options.get('taxonomy_id')
         org = Organism.objects.get(taxonomy_id=tax_id)
@@ -129,6 +127,7 @@ class Command(BaseCommand):
 
         # Open the geneinfo file.
         if geneinfo_filename:
+            print("poop3")
             geneinfo_fh = open(geneinfo_filename)
 
         # yeast has a taxonomy_id that changed, in this case when we look at
